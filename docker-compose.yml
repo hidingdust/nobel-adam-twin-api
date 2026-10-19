@@ -1,0 +1,29 @@
+services:
+  twin-api:
+    build: .
+    image: nobel-adam-twin-api:latest
+    container_name: twin-api
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      TWIN_KNOWLEDGE_DIR: /app/knowledge
+      JAVA_TOOL_OPTIONS: "-Xms96m -Xmx224m -XX:MaxMetaspaceSize=96m -XX:+UseSerialGC"
+    volumes:
+      - ./knowledge:/app/knowledge:ro
+    ports:
+      - "127.0.0.1:18080:8080"
+    mem_limit: 448m
+    memswap_limit: 448m
+    networks:
+      - sunset_hunter_default
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  sunset_hunter_default:
+    external: true
+    name: sunset-hunter_default

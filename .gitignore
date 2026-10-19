@@ -1,0 +1,19 @@
+target/
+app.jar
+.git/
+.idea/
+.vscode/
+*.iml
+*.log
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+
+# 知识库属于私有数据，不进入公开仓库
+knowledge/system-prompt/
+knowledge/index/
+knowledge/*.json
+knowledge/*.jsonl
+!knowledge/README.md

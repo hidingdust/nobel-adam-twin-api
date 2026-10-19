@@ -1,0 +1,10 @@
+target/
+.git/
+.idea/
+.vscode/
+.env
+knowledge/
+scripts/
+*.log
+*.md
+!README.md

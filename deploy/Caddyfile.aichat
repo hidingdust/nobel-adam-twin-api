@@ -1,0 +1,7 @@
+aichat.nobeladam.cn {
+	encode gzip
+	reverse_proxy twin-api:8080 {
+		# SSE 必须关闭缓冲，否则前端会等到整段回答结束才收到内容
+		flush_interval -1
+	}
+}
