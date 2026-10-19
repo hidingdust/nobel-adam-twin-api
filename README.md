@@ -386,5 +386,5 @@ deploy/           Caddy 站点片段
 
 - 个人主页：[home.nobeladam.cn](https://home.nobeladam.cn)
 - 前端仓库：[gitee.com/hidingdust/nobel-adam](https://gitee.com/hidingdust/nobel-adam)
-- 后端仓库：[gitee.com/hidingdust/nobel-adam-twin-api](https://gitee.com/hidingdust/nobel-adam-twin-api)
+- 后端仓库：Gitee [nobel-adam-twin-api](https://gitee.com/hidingdust/nobel-adam-twin-api) · GitHub [nobel-adam-twin-api](https://github.com/hidingdust/nobel-adam-twin-api)
 - 部署手册：[DEPLOYMENT.md](DEPLOYMENT.md)
