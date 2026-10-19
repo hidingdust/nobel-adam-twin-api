@@ -2,9 +2,9 @@
 
 > 把个人项目文档变成一个可以被面试官追问的「数字分身」。
 
-线上体验：[home.nobeladam.cn](https://home.nobeladam.cn)  
-前端仓库：[gitee.com/hidingdust/nobel-adam](https://gitee.com/hidingdust/nobel-adam)  
-API 健康检查：[aichat.nobeladam.cn/api/health](https://aichat.nobeladam.cn/api/health)
+- 线上体验：[home.nobeladam.cn](https://home.nobeladam.cn)
+- 前端仓库：[gitee.com/hidingdust/nobel-adam](https://gitee.com/hidingdust/nobel-adam)
+- API 健康检查：[aichat.nobeladam.cn/api/health](https://aichat.nobeladam.cn/api/health)
 
 ---
 
@@ -354,16 +354,20 @@ deploy/           Caddy 站点片段
 
 ## 设计取舍
 
-**为什么不用 Spring AI / LangChain4j？**  
+**为什么不用 Spring AI / LangChain4j？**
+
 这个服务只需要 chat、embedding、rerank 三个 HTTP 调用。直接走 OpenAI 兼容协议，依赖更少、启动更轻，换模型/服务商只改配置。以后如果要换回 Spring AI，只需要替换 `AiClient`，其余检索、限流、SSE 逻辑不变。
 
-**为什么不用向量数据库？**  
+**为什么不用向量数据库？**
+
 513 个 chunk、1024 维，向量总共约 2MB。启动加载进内存，余弦相似度是微秒级；引入 pgvector / Milvus 只会多一个故障点。数据量到几万块再考虑。
 
-**为什么不在服务端保存对话？**  
+**为什么不在服务端保存对话？**
+
 个人主页不需要用户体系；历史由前端带最近几轮，服务端无状态、无数据库、无隐私留存。代价是无法跨设备续聊，但面试场景够用。
 
-**为什么限流做在两层？**  
+**为什么限流做在两层？**
+
 前端限流是体验，后端限流才是安全边界。公开接口一定会被扫，单 IP 10 次/分钟 + 每日/全局预算能挡住大部分滥用。
 
 ---
